@@ -54,6 +54,27 @@ toggleItem = id => {
 };
 
 
+addItem = itemName => {
+  //grabs data from entered item, creates a new object, sets default to not completed
+  const newItem = {
+    task: itemName,
+    id: Date.now(),
+    completed: false
+  };
+  this.setState({
+    todoItems: [...this.state.todoItems, newItem]
+  });
+};
+
+clearCompleted = () => {
+  this.setState({
+    todoItems: this.state.todoItems.filter(item => !item.completed)
+
+  });
+}
+
+
+
   render() {
     return (
       <div>
