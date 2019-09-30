@@ -11,6 +11,7 @@
 //=============================
 
 import React from "react";
+import TodoForm from "./components/TodoComponents/TodoForm"
 
 const itemData = [
   {
@@ -33,52 +34,50 @@ class App extends React.Component {
     };
   }
 
-  
-toggleItem = id => {
-  //update state, loop through array, find which element was clicked, update the completed property
-  console.log("In toggleId. Id=", id)
+  toggleItem = id => {
+    //update state, loop through array, find which element was clicked, update the completed property
+    console.log("In toggleId. Id=", id);
 
-  this.setState({
-    todoItems: this.state.todoItems.map(item => {
-      if (item.id === id){
-        return{
-          ...item,
-          // same as passing in each item property and current value
-          completed: !item.completed
-        };
-      } else{
-        return item;
-      }
-    })
-  });
-};
-
-
-addItem = itemName => {
-  //grabs data from entered item, creates a new object, sets default to not completed
-  const newItem = {
-    task: itemName,
-    id: Date.now(),
-    completed: false
+    this.setState({
+      todoItems: this.state.todoItems.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            // same as passing in each item property and current value
+            completed: !item.completed
+          };
+        } else {
+          return item;
+        }
+      })
+    });
   };
-  this.setState({
-    todoItems: [...this.state.todoItems, newItem]
-  });
-};
 
-clearCompleted = () => {
-  this.setState({
-    todoItems: this.state.todoItems.filter(item => !item.completed)
+  addItem = itemName => {
+    //grabs data from entered item, creates a new object, sets default to not completed
+    const newItem = {
+      task: itemName,
+      id: Date.now(),
+      completed: false
+    };
+    this.setState({
+      todoItems: [...this.state.todoItems, newItem]
+    });
+  };
 
-  });
-}
-
-
+  clearCompleted = () => {
+    this.setState({
+      todoItems: this.state.todoItems.filter(item => !item.completed)
+    });
+  };
 
   render() {
     return (
-      <div>
-        <h2>To Do:</h2>
+      <div className="App">
+        <div className="Header">
+          <h2>To Do:</h2>
+          <TodoForm addItem={this.addItem}/>
+        </div>
       </div>
     );
   }
