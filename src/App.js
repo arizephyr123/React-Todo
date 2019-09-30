@@ -11,7 +11,8 @@
 //=============================
 
 import React from "react";
-import ListForm from "./components/TodoComponents/TodoForm"
+import ListForm from "./components/TodoComponents/TodoForm";
+import Task from "./components/TodoComponents/Todo";
 
 const itemData = [
   {
@@ -32,6 +33,7 @@ class App extends React.Component {
     this.state = {
       todoItems: itemData
     };
+    this.toggleItem = this.toggleItem.bind(this);
   }
 
   toggleItem = id => {
@@ -76,8 +78,9 @@ class App extends React.Component {
       <div className="App">
         <div className="Header">
           <h2>To Do:</h2>
-          <ListForm addItem={this.addItem}/>
+          <ListForm addItem={this.addItem} />
         </div>
+        <Task todoItems={this.state.todoItems} toggleItem={this.toggleItem} />
       </div>
     );
   }

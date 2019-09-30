@@ -7,16 +7,16 @@ import React from "react";
 class TodoForm extends React.Component {
   constructor() {
     super();
-    this.State = {
+    this.state = {
       task: ""
     };
   }
 
 
   //Q: grabs entry and sets it as task property in TodoForm state?
-  handleChange = e => {
+  handleChanges = e => {
     this.setState({
-      [e.target.task]: e.target.value
+      task: e.target.value
     });
   };
 
@@ -33,7 +33,7 @@ class TodoForm extends React.Component {
           type="text"
           vaule={this.task}
           name="task"
-          onChange={this.handleChange}
+          onChange={this.handleChanges}
         />
         <button>Add</button>
       </form>
