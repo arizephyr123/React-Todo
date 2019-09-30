@@ -11,7 +11,7 @@
 //=============================
 
 import React from "react";
-import TodoForm from "./components/TodoComponents/TodoForm"
+import ListForm from "./components/TodoComponents/TodoForm"
 
 const itemData = [
   {
@@ -76,7 +76,7 @@ class App extends React.Component {
       <div className="App">
         <div className="Header">
           <h2>To Do:</h2>
-          <TodoForm addItem={this.addItem}/>
+          <ListForm addItem={this.addItem}/>
         </div>
       </div>
     );

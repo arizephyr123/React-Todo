@@ -28,7 +28,7 @@ class TodoForm extends React.Component {
 
   render() {
     return (
-      <form on Submit={this.submitTask}>
+      <form onSubmit={this.submitTask}>
         <input
           type="text"
           vaule={this.task}
