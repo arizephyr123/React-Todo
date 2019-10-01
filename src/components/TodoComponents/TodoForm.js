@@ -10,10 +10,9 @@ class TodoForm extends React.Component {
     this.state = {
       task: ""
     };
-    this.submitTask = this.submitTask.bind(this)
   }
 
-  //Q: grabs entry and sets it as task property in TodoForm state?
+  // grabs entry and sets it as task property in TodoForm state
   handleChanges = e => {
     this.setState({
       task: e.target.value
@@ -22,21 +21,32 @@ class TodoForm extends React.Component {
   };
 
   submitTask = e => {
-    //Q: prevents whole page from refreshing?
+    // prevents whole page from refreshing and loosing added todo
     e.preventDefault();
     this.props.addItem(this.state.task);
+    //trying to clear text input
+    this.setState({
+      task: ""
+    });
   };
+
+  resetInput = e =>{
+    document.getElementById("input").value= "";
+
+  }
 
   render() {
     return (
       <form onSubmit={this.submitTask}>
         <input
+        id="input"
+          defaultValue=""
           type="text"
           value={this.task}
           name="task"
           onChange={this.handleChanges}
         />
-        <button>Add</button>
+        <button onClick={this.resetInput}>Add</button>
       </form>
     );
   }
