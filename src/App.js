@@ -11,8 +11,9 @@
 //=============================
 
 import React from "react";
-import ListForm from "./components/TodoComponents/TodoForm";
-import Task from "./components/TodoComponents/Todo";
+import TodoForm from "./components/TodoComponents/TodoForm";
+import TodoList from "./components/TodoComponents/TodoList";
+
 
 const itemData = [
   {
@@ -33,16 +34,18 @@ class App extends React.Component {
     this.state = {
       todoItems: itemData
     };
-    this.toggleItem = this.toggleItem.bind(this);
+    
   }
+
+ 
 
   toggleItem = id => {
     //update state, loop through array, find which element was clicked, update the completed property
-    console.log("In toggleId. Id=", id);
-
+    console.log("In toggleItem. Id=", id);
     this.setState({
       todoItems: this.state.todoItems.map(item => {
         if (item.id === id) {
+          console.log(id);
           return {
             ...item,
             // same as passing in each item property and current value
@@ -62,15 +65,18 @@ class App extends React.Component {
       id: Date.now(),
       completed: false
     };
+    console.log(newItem);
     this.setState({
       todoItems: [...this.state.todoItems, newItem]
     });
   };
 
+
   clearCompleted = () => {
     this.setState({
       todoItems: this.state.todoItems.filter(item => !item.completed)
     });
+    return this.todoItems;
   };
 
   render() {
@@ -78,9 +84,13 @@ class App extends React.Component {
       <div className="App">
         <div className="Header">
           <h2>To Do:</h2>
-          <ListForm addItem={this.addItem} />
+          <TodoForm addItem={this.addItem} />
         </div>
-        <Task todoItems={this.state.todoItems} toggleItem={this.toggleItem} />
+        <TodoList 
+        todoItems={this.state.todoItems} 
+        toggleItem={this.toggleItem}
+        clearCompleted={this.clearCompleted} 
+        />
       </div>
     );
   }

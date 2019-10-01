@@ -1,17 +1,20 @@
 // - `<Todo />` is a component that takes in the `todo` data and displays the task to the screen.
 
 import React from "react";
+import "../../../src/styles.css"
 
-const Task = props => {
-    console.log(props.todoItems);
-    return (
-        <div
-        className={`item${props.todoItems.completed ? " completed" : ""}`}
-        onClick={() => props.toggleItem(props.id)}
-        >
-            {/* <p>{props.todoItems}</p> */}
-        </div>
-    );
+const Todo = props => {
+    // console.log("Todo props: ", props)
+    // console.log("Todo props: ", props.item.task)
+    // console.log("Todo props-toggleItem: ", props.toggleItem)
+  return (
+    <div
+      className={`item${props.item.completed ? "-completed" : ""}`}
+      onClick={() => props.toggleItem(props.item.id)}
+    >
+        <p>{props.item.task}</p>
+    </div>
+  );
 };
 
-export default Task;
+export default Todo;

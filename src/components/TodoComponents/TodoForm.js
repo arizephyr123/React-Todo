@@ -10,18 +10,19 @@ class TodoForm extends React.Component {
     this.state = {
       task: ""
     };
+    this.submitTask = this.submitTask.bind(this)
   }
-
 
   //Q: grabs entry and sets it as task property in TodoForm state?
   handleChanges = e => {
     this.setState({
       task: e.target.value
     });
+    // this.toggleItem = this.toggleItem.bind(this);
   };
 
   submitTask = e => {
-      //Q: prevents whole page from refreshing?
+    //Q: prevents whole page from refreshing?
     e.preventDefault();
     this.props.addItem(this.state.task);
   };
@@ -31,7 +32,7 @@ class TodoForm extends React.Component {
       <form onSubmit={this.submitTask}>
         <input
           type="text"
-          vaule={this.task}
+          value={this.task}
           name="task"
           onChange={this.handleChanges}
         />
