@@ -7,11 +7,25 @@
 
 import React from "react";
 
+import TodoList from './components/TodoComponents/TodoList';
+import TodoForm from './components/TodoComponents/TodoForm';
+
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: []
+      todos: [
+        {
+          task: 'Organize Garage',
+          id: 1528817077286,
+          completed: false
+        },
+        {
+          task: 'Bake Cookies',
+          id: 1528817084358,
+          completed: false
+        }
+      ]
     };
   }
 
@@ -33,7 +47,7 @@ class App extends React.Component {
     });
   };
 
-  filterCompleted = () => {
+  filterCompleted = item => {
     this.setState({
       todos: this.state.todos.filter(item.completed === true)
       });
@@ -44,6 +58,8 @@ class App extends React.Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
+        <TodoForm todos={this.state.todos} addTodo={this.state.addTodo}/>
+        <TodoList todos={this.state.todos}/>
       </div>
     );
   }
