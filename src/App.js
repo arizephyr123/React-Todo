@@ -25,7 +25,7 @@ class App extends React.Component {
     this.setState({
       todos: this.state.todos.map(item => {
         if (item.id === id) {
-          return {...item,completed: !item.purchased};
+          return {...item,completed: !item.completed};
         } else {
           return item;
         }
@@ -33,7 +33,12 @@ class App extends React.Component {
     });
   };
 
-  filterCompleted = () => {};
+  filterCompleted = () => {
+    this.setState({
+      todos: this.state.todos.filter(item.completed === true)
+      });
+};
+
 
   render() {
     return (
