@@ -7,8 +7,9 @@
 
 import React from "react";
 
-import TodoList from './components/TodoComponents/TodoList';
-import TodoForm from './components/TodoComponents/TodoForm';
+import TodoList from "./components/TodoComponents/TodoList";
+import TodoForm from "./components/TodoComponents/TodoForm";
+import './components/TodoComponents/Todo.css'
 
 class App extends React.Component {
   constructor() {
@@ -16,12 +17,12 @@ class App extends React.Component {
     this.state = {
       todos: [
         {
-          task: 'Organize Garage',
+          task: "Organize Garage",
           id: 1528817077286,
           completed: false
         },
         {
-          task: 'Bake Cookies',
+          task: "Bake Cookies",
           id: 1528817084358,
           completed: false
         }
@@ -29,17 +30,26 @@ class App extends React.Component {
     };
   }
 
-  addTodo = newTodo => {
+  addTodo = task => {
+    const newTodo = {
+      task: task,
+      id: Date.now(),
+      completed: false
+    };
     this.setState({
       todos: [...this.state.todos, newTodo]
     });
   };
 
   toggleCompleted = id => {
+    //console.log('in toggleCompleted', id)
     this.setState({
       todos: this.state.todos.map(item => {
         if (item.id === id) {
-          return {...item,completed: !item.completed};
+          return {
+            ...item,
+            completed: !item.completed
+          };
         } else {
           return item;
         }
@@ -47,19 +57,24 @@ class App extends React.Component {
     });
   };
 
-  filterCompleted = item => {
+  filterCompleted = () => {
     this.setState({
-      todos: this.state.todos.filter(item.completed === true)
-      });
-};
-
+      todos: this.state.todos.filter(item => !item.completed)
+    });
+    return this.todos;
+  };
 
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm todos={this.state.todos} addTodo={this.state.addTodo}/>
-        <TodoList todos={this.state.todos}/>
+        <TodoForm 
+        addTodo={this.addTodo} />
+        <TodoList
+          todos={this.state.todos}
+          toggleCompleted={this.toggleCompleted}
+          filterCompleted={this.filterCompleted}
+        />
       </div>
     );
   }
