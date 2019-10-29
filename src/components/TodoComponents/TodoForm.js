@@ -26,13 +26,16 @@ class TodoForm extends React.Component {
   
 
   render() {
-    console.log("in TodoForm", this.props);
+    //console.log("in TodoForm", this.props);
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label></label>
+      <div className="form">
+        <form 
+        onSubmit={this.handleSubmit}>
+          <label htmlFor="task"></label>
           <input
-            type="text"
+            type="text" 
+            id='task'
+            name='task'
             value={this.state.newTodo}
             onChange={this.handleChanges}
           />

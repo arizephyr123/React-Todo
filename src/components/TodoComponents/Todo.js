@@ -6,10 +6,10 @@ const Todo = props => {
     //console.log('in Todo', props);
   return (
     <div
-    className={`todo${props.item.completed ? '-toggled':''}`}
+    className={`todo${props.item.completed ? ' toggled':''}`}
     onClick={() => props.toggleCompleted(props.item.id)}
     >
-      <h3>{props.item.task}</h3>
+      <li>{props.item.task}</li>
     </div>
   );
 };

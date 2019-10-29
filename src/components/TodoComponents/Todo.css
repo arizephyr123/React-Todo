@@ -1,6 +1,29 @@
+html {
+    height: 100vh;
+    background: rgb(34,193,195);
+background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+font-family: 'Open Sans', sans-serif;
+list-style-type:disc;
+color: #003333;
+}
 
+.form input {
+    color: #003333;
+    border-radius: 5px;
+}
 
-.todo-toggled {
-    background-color: grey;
+button {
+    font-family: 'Open Sans', sans-serif;
+    color: #003333;
+    border-radius: 5px;
+}
+
+li {
+    text-transform: capitalize;
+    font-weight: bolder; 
+}
+
+.toggled {
     text-decoration: line-through;
+    font-weight: lighter;
 }

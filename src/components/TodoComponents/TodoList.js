@@ -5,7 +5,7 @@ import React from "react";
 import Todo from "./Todo";
 
 const TodoList = props => {
-  console.log("in TodoList", props);
+  //console.log("in TodoList", props);
 
   return (
     <>
@@ -13,11 +13,13 @@ const TodoList = props => {
       {props.todos.map(item => {
         return (
           <div>
+              <ul>
             <Todo 
             key={item.id} 
             item={item} 
             toggleCompleted={props.toggleCompleted}
             />
+            </ul>
           </div>
         );
       })}
